@@ -1,0 +1,162 @@
+﻿.mz-sitenav {
+    @navHeight: 37px;
+    float: right;
+    background: transparent;
+    height: @navHeight;
+    overflow: visible;
+    .clearfix();
+    > .mz-sitenav-list {
+        display: table-row;
+        > .mz-sitenav-item:first-child {
+            padding-left: @gutter * .75;
+        }
+    } 
+
+    .mz-sitenav-item {
+        display: table-cell;
+        // to remove space gap
+        font-size: 0.1px;
+        z-index: 3;
+
+        .mz-sitenav-item-inner {
+            position: relative;
+        }
+        
+        &:hover .mz-sitenav-sub {
+            visibility: visible;
+            .transition-delay(0s);
+        }
+    }
+
+    .mz-sitenav-sub {
+        background: #fcff19;
+        top: @navHeight - 1;
+        position: absolute;
+        z-index: 1;
+        visibility: hidden;
+        .transition(visibility 0s ease-out .25s);
+
+        > .mz-sitenav-item {
+            display: block;
+            width: 100%;
+            .mz-sitenav-link {
+                .transition-property(~"height, padding, opacity");
+                .transition-duration(~".25s, .25s, .08s");
+                .transition-delay(~"0s, 0s, .05s");
+                // height: 0px;
+                // opacity: 0;
+                // padding: 0;
+                display: block;
+                color: #000;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .mz-sitenav-item:hover > .mz-sitenav-link, .mz-sitenav-link.is-current {
+        background-color: #fcff19;
+        color: @textColor;
+        &:visited {
+            color: @textColor;
+        }
+    }
+
+    .mz-sitenav-item:hover .mz-sitenav-sub .mz-sitenav-link {
+        padding: 10px @gutter*.75;
+        opacity: 1;
+    }
+
+    .mz-sitenav-link {
+        color: #eeeeee;
+        text-decoration: none;
+        display: inline-block;
+        padding: 10px @gutter*.75;//@gutter*.325;
+        font-size: 15px;
+        position: relative;
+        border-radius: 10px;
+        font-weight: 500;
+        text-transform: uppercase; 
+        transition: all 1s;       
+        &:hover{
+            color: #000000;
+            background-color: #fcff19;
+        }
+        &.active{ 
+            background-color: #fcff19;
+        }
+    }
+
+    .mz-sitenav-item:hover .mz-sitenav-link{
+        background-color: #fcff19;
+        color: #000000;
+    }
+    @media only screen {
+        @media (max-width: 800px) {
+            height: auto;
+            > .mz-sitenav-list {
+                display: block;
+            }
+            .mz-sitenav-item {
+                display: inline-block;
+            }
+            .mz-sitenav-sub, .mz-sitenav-item-more {
+                display: none;
+            }
+        }
+    }
+}
+.mz-pagefooter .mz-sitenav .mz-sitenav-link{
+    color: #000;
+}
+    @media screen and (max-width: 992px) {
+        .mz-sitenav .mz-sitenav-link{
+            font-size: 14px; 
+            padding: 10px 9px;
+        }
+    } 
+    @media screen and (max-width: 767px) {
+        .mz-sitenav{
+            float: none;
+            clear: both;
+            border: 0;  
+        } 
+        .mz-sitenav .mz-sitenav-item{
+            display: block;
+        }
+        .mz-sitenav .mz-sitenav-sub, .mz-sitenav .mz-sitenav-item-more{
+            display: none;
+        }
+        .mz-sitenav>.mz-sitenav-list>.mz-sitenav-item:first-child{
+            padding-left: 0;
+        }
+        .mz-sitenav .mz-sitenav-link {
+            color: #000;
+            border-radius: 0;
+            background: #fcff19;
+            display: block;
+            border-bottom: 1px solid #fff;
+            transition: none;
+        }
+    }
+        @media screen and (max-width: 600px) {
+            .header-page .mz-sitenav {
+                float: none;
+                clear: both;
+                position: absolute;
+                border: 0;
+                width: 100%;
+                left: 0;
+                margin: 0;
+                top: 81px;
+                padding: 0;
+            } 
+        }   
+
+        ul.mz-sitenav-sub{
+            position: absolute;
+        }
+        .navbar-collapse.in{
+                @media screen and (max-width: 600px) {
+                    overflow: initial;
+                }
+        }
